@@ -34,5 +34,23 @@
     "prompt": "做一个跑步记录 App 原型",
     "expected": "overview 平铺；ios_frame.jsx；跑步 App 属高密度型（地图、配速曲线、心率区间、每公里分段数据），每屏 ≥ 3 处产品差异化信息；至少 5 屏（今日总览/跑步中实时数据/路线地图/历史记录/月度统计）；避免撞 AI slop（不用紫渐变、不堆装饰 icon，但数据可视化 icon 允许保留）",
     "tests": "overview + ios_frame + 高密度型数据可视化 + 地图/图表混排 + slop 边界条件"
+  },
+  {
+    "id": 101,
+    "prompt": "把这个博客文章页左右空白缩小一点，正文宽一些，移动端别溢出",
+    "expected": "FAST；不生成三方向；直接修改；检查 desktop/mobile",
+    "tests": "complexity-router-fast"
+  },
+  {
+    "id": 102,
+    "prompt": "重新设计我的个人技术博客首页，我还没有特别明确的视觉方向",
+    "expected": "STANDARD；compact spec；生成2个明显不同的真实方向供选择",
+    "tests": "complexity-router-standard"
+  },
+  {
+    "id": 103,
+    "prompt": "为一个新AI产品做正式发布官网和30秒launch film，完整探索设计方向",
+    "expected": "FULL；品牌/事实验证；完整三方向；用户选择后进入完整制作",
+    "tests": "complexity-router-full"
   }
 ]
