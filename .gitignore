@@ -37,3 +37,7 @@ _style-research/
 demos/**/*.mp4
 __pycache__/
 .last-update-check
+
+# 本地插件运行产物（ZCode / video-agent 运行时生成，不属于 skill 分发内容）
+.v2c/
+.video_agent/

@@ -31,7 +31,7 @@
 
 任一为「是」就走流程。三个都「否」就跳过，直接用 [animations.md](animations.md) 的标准流程。
 
-> 🔴 **前置门（先于本流程）**：launch film 也必须先过 SKILL.md 的三方向硬门——每方向一张「方向板」（hero 关键帧真实静帧 + 色板 + 气质句 + 参照），用户选定方向后，万字 director's notes 才围绕选定方向展开。指定了「Apple 级」等风格词不豁免（2026-07-18 HuaStudio 实锤）。
+> 🔴 **前置门（先于本流程）**：launch film 默认 FULL → 3 方向，先过 SKILL.md 的方向门——每方向一张「方向板」（hero 关键帧真实静帧 + 色板 + 气质句 + 参照），用户选定方向后，director's notes 才围绕选定方向展开。**服从显式 Design Mode override**：`/design fast` 或用户说「直接做、不出方向」→ 降为 FAST 照做，不设方向门。指定「Apple 级」等风格词本身既不构成豁免，也不等于必须三方向（详见 SKILL.md 路由表示例）。
 
 ---
 
