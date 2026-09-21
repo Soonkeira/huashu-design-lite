@@ -107,7 +107,7 @@ No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Cod
 | Motion design | MP4 (25fps / 60fps interpolation) + GIF (palette-optimized) + BGM | 8–12 min |
 | Design variations | 3+ side-by-side · Tweaks live params · cross-dimension exploration | 10 min |
 | Infographic / data viz | Print-quality typography · exports to PDF/PNG/SVG | 10 min |
-| Direction exploration (STANDARD / FULL) | 2–3 real directions scaled to complexity · three complementary logics (second-hand roulette + reality reference + best designer) | 5 min |
+| Direction exploration (STANDARD / FULL) | 2–3 real directions scaled to complexity: 2 of the three complementary logics in STANDARD, all 3 in FULL (second-hand roulette + reality reference + best designer) | 5 min |
 | 5-dimension expert critique | Radar chart + Keep/Fix/Quick Wins · actionable punch list | 3 min |
 
 ---

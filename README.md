@@ -119,7 +119,7 @@ npx skills add Soonkeira/huashu-design-lite
 | 时间轴动画 | MP4（25fps / 60fps 插帧）+ GIF（palette 优化）+ BGM | 8–12 min |
 | 设计变体 | 3+ 并排对比 · Tweaks 实时调参 · 跨维度探索 | 10 min |
 | 信息图 / 可视化 | 印刷级排版 · 可导 PDF/PNG/SVG | 10 min |
-| 方向探索（STANDARD / FULL） | 按复杂度出 2–3 版真实视觉 · 三套互补逻辑（秒数轮盘 + 现实参照获奖站 + 最佳设计师） | 5 min |
+| 方向探索（STANDARD / FULL） | 按复杂度出 2–3 版真实视觉：从三套互补逻辑（秒数轮盘 + 现实参照获奖站 + 最佳设计师）中取 2 套（STANDARD）或 3 套（FULL） | 5 min |
 | 5 维度专家评审 | 雷达图 + Keep/Fix/Quick Wins · 可操作修复清单 | 3 min |
 
 ---

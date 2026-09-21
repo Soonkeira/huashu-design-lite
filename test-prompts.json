@@ -52,5 +52,11 @@
     "prompt": "为一个新AI产品做正式发布官网和30秒launch film，完整探索设计方向",
     "expected": "FULL；品牌/事实验证；完整三方向；用户选择后进入完整制作",
     "tests": "complexity-router-full"
+  },
+  {
+    "id": 104,
+    "prompt": "给我的新 AI 产品做正式发布官网，但我已经确定设计方向，就按我提供的参考直接做，不要出多个方案。",
+    "expected": "FAST override；虽然任务本身属于 FULL 级别，但用户明确要求直接做，因此不进行三方向探索。",
+    "tests": "complexity-router-explicit-override"
   }
 ]
