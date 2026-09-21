@@ -1,5 +1,5 @@
 ---
-name: huashu-design
+name: huashu-design-lite
 description: 花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审。根据任务复杂度自动选择 FAST / STANDARD / FULL 模式：局部修改直接执行；普通新设计做轻量方向探索；高不确定性或高价值设计执行完整三方向流程。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。
 ---
 

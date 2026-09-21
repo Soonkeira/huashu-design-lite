@@ -2,10 +2,9 @@
 
 <div align="center">
 
-# Huashu Design
+# Huashu Design Lite
 
 > *"Type. Hit enter. A finished design lands in your lap."*
-> *「打字。回车。一份能交付的设计。」*
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Agent-Agnostic](https://img.shields.io/badge/Agent-Agnostic-blueviolet)](https://skills.sh)
@@ -13,23 +12,42 @@
 
 <br>
 
-**Say one sentence to your agent — Claude Code, Cursor, Codex, OpenClaw, Hermes all work.**
+**One sentence in your agent, one shippable design back.**
+
+In 3 to 30 minutes you can ship a **product launch animation**, a clickable app prototype, an editable deck, or a print-grade infographic. Not "pretty good for AI" — it looks like a studio made it. Give it your brand assets (logo, palette, UI screenshots) and it reads your brand; give it nothing and it **picks a mode by design complexity**: ordinary new designs get 2 directions, and only high-uncertainty work runs the full three-direction advisor plus the 60 built-in HTML-native styles, so it never falls to AI slop.
+
+**Every animation in this README was made by huashu-design itself (this fork keeps all of those capabilities).** Not Figma, not After Effects — one prompt plus the skill.
 
 <br>
 
-3 to 30 minutes — you ship a **product launch animation**, a clickable App prototype, an editable PPT deck, a print-grade infographic.
+> **The adaptive, lightweight workflow edition of Huashu Design.**
+> Based on [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design). Keeps its HTML-native design engine, brand asset protocol, visual exploration, PPT / animation / prototype toolchain, and anti-AI-slop rules.
 
-Not "decent for AI" quality — it looks like a real design team made it. Give the skill your brand assets (logo, colors, UI screenshots) and it reads your brand's voice; give it nothing and the built-in 20 design vocabularies still keep you out of AI slop territory.
+What changed:
 
-**Every animation in this README was made by huashu-design itself.** No Figma, no After Effects — just a sentence + skill run. Next product launch needs a promo video? You can make it too.
+- **FAST** — local edits execute directly, with no pointless design directions
+- **STANDARD** — ordinary new designs get 2 directions plus a compact spec
+- **FULL** — high-value, high-uncertainty work keeps the original full three-direction flow
+- references load lazily, cutting context cost
+- runtime degrades by real capability, not by model vendor
+- an explicit reference or an approved direction goes straight to implementation
+
+Core principle:
+
+> Workflow complexity should scale with design uncertainty,
+> not task existence.
 
 ```
-npx skills add alchaincyf/huashu-design
+npx skills add Soonkeira/huashu-design-lite
 ```
 
-> 📣 **Now MIT-licensed.** As of 2026-05-14 this skill is fully open-source under the [MIT License](LICENSE) — free for personal **and** commercial use, no authorization required. ([what changed](#license))
+Works across agents — Claude Code, Cursor, Codex, OpenClaw, Hermes.
 
-[See it work](#demo-gallery) · [Install](#install) · [What it does](#what-it-does) · [How it works](#core-mechanics) · [vs. Claude Design](#vs-claude-design)
+> 📣 **This repo is a fork, not the upstream.** For the full three-direction flow and the original complete toolset, install [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design). To let the workflow scale with design complexity instead, install this one.
+
+> 📣 **MIT licensed.** Upstream has been fully open source since 2026-05-14 ([MIT License](LICENSE)) — free for personal **and commercial** use, no prior authorization needed. This fork keeps the same license. ([see the change](#license))
+
+[Design complexity routing](#design-complexity-routing) · [Install](#install) · [What it can do](#what-it-can-do) · [Core mechanics](#core-mechanics) · [vs. Claude Design](#vs-claude-design)
 
 > 📖 **Note for English readers**: this skill is built by a Chinese-speaking developer. The skill's agent prompts (`SKILL.md`, `references/*.md`) are in Chinese but the agent is bilingual — works fine with English tasks. The demos below are the English parallel versions; the Chinese ones are in the default [Chinese README](README.md).
 >
@@ -52,45 +70,35 @@ npx skills add alchaincyf/huashu-design
 ## Install
 
 ```bash
-npx skills add alchaincyf/huashu-design
+npx skills add Soonkeira/huashu-design-lite
 ```
 
-> **Verify after install**: this skill is more than a single SKILL.md — the `references/`, `assets/`, `scripts/`, and `demos/` subdirectories hold 99 referenced recipes, scripts, and assets that the skill depends on. After installing, check the install path (e.g. `~/.claude/skills/huashu-design/`); if you only see SKILL.md and none of those subdirectories, your `skills` CLI is too old (≤1.5.15 had a bug that synced only the single file, fixed in 1.5.19). Upgrade and reinstall:
+> **Verify after install**: this skill is more than a single SKILL.md — the `references/`, `assets/`, `scripts/`, and `demos/` subdirectories hold 99 referenced recipes, scripts, and assets that the skill depends on. After installing, check the install path (e.g. `~/.claude/skills/huashu-design-lite/`); if you only see SKILL.md and none of those subdirectories, your `skills` CLI is too old (≤1.5.15 had a bug that synced only the single file, fixed in 1.5.19). Upgrade and reinstall:
 >
 > ```bash
-> npm i -g skills@latest        # or npx skills@latest add alchaincyf/huashu-design
+> npm i -g skills@latest        # or npx skills@latest add Soonkeira/huashu-design-lite
 > ```
 >
 > If it's still wrong after upgrading, fall back to a `git clone` install — clone the repo into any skills directory:
 >
 > ```bash
-> git clone https://github.com/alchaincyf/huashu-design.git ~/.claude/skills/huashu-design
+> git clone https://github.com/Soonkeira/huashu-design-lite.git ~/.claude/skills/huashu-design-lite
 > ```
 
 Then just talk to Claude Code:
 
 ```
-"Make a keynote for AI psychology. Give me 3 style directions to pick from."
-"Build an iOS prototype for a Pomodoro app — 4 screens, actually clickable."
-"Turn this logic into a 60-second animation. Export MP4 and GIF."
-"Run a 5-dimension expert review on this design."
+"Tighten the side margins on this blog article, widen the body, no mobile overflow"     → FAST, direct edit
+"Make a keynote for AI psychology"                                                      → STANDARD, 2 directions
+"Build a formal launch site plus a 30-second launch film, explore fully"                → FULL, full three directions
+"Run a 5-dimension review on this design"                                               → review flow only
 ```
 
 No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Code, Cursor, Trae, Hermes, OpenClaw, or any markdown-skill-capable agent.
 
 ---
 
-## Star History
-
-<p align="center">
-  <a href="https://star-history.com/#alchaincyf/huashu-design&Date">
-    <img src="https://api.star-history.com/svg?repos=alchaincyf/huashu-design&type=Date" alt="huashu-design Star History" width="80%">
-  </a>
-</p>
-
----
-
-## What it does
+## What it can do
 
 | Capability | Deliverable | Typical time |
 |---|---|---|
@@ -99,8 +107,24 @@ No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Cod
 | Motion design | MP4 (25fps / 60fps interpolation) + GIF (palette-optimized) + BGM | 8–12 min |
 | Design variations | 3+ side-by-side · Tweaks live params · cross-dimension exploration | 10 min |
 | Infographic / data viz | Print-quality typography · exports to PDF/PNG/SVG | 10 min |
-| Design direction advisor | 5 schools × 20 philosophies · 3 directions recommended · Demos generated in parallel | 5 min |
+| Direction exploration (STANDARD / FULL) | 2–3 real directions scaled to complexity · three complementary logics (second-hand roulette + reality reference + best designer) | 5 min |
 | 5-dimension expert critique | Radar chart + Keep/Fix/Quick Wins · actionable punch list | 3 min |
+
+---
+
+## Design complexity routing
+
+Pick the mode before doing any work. If the user doesn't explicitly pass `/design fast`, `/design standard`, or `/design full`, decide automatically.
+
+| Mode | When it applies | Behaviour |
+|---|---|---|
+| **FAST** | Local edits · spacing / type scale / colour / alignment tweaks · responsive, overflow and clipping fixes · iteration after a direction is chosen · a given reference to implement faithfully · mechanical visual work | No three-direction flow · no design-demos · no long spec · no clarifying questions unless something truly blocks · implement directly, then check at least Desktop + Mobile |
+| **STANDARD** (default) | New pages · ordinary landing pages · homepage redesigns · dashboards · app screens/prototypes · ordinary infographics — design context exists but the visual direction is still open | At most 2 questions that genuinely change the design · **2 clearly different real directions** by default · with an explicit reference / brand system / approved direction, go straight to a single proposal instead of manufacturing variants |
+| **FULL** | Brand design from zero · high-value official sites · product launch pages · launch films and campaigns · formal decks and pitch decks · highly ambiguous briefs · an explicit request for full exploration | The original complete workflow: fact and brand-asset verification → three real directions → complete design spec → user selection gate → multi-round visual verification |
+
+**Explicit instructions beat automatic judgement**: "just build it, no options" → FAST; "show me a few directions" → STANDARD or FULL; "explore fully first" → FULL. Never upgrade to FULL just because the task is "design".
+
+> Generate multiple directions only when there is a design disagreement worth the user's decision.
 
 ---
 
@@ -108,9 +132,9 @@ No buttons, no panels, no Figma plugin. Agent-agnostic — drops into Claude Cod
 
 > English parallel versions of the demos. Chinese versions live at the default filenames (see the Chinese README).
 
-### Design Direction Advisor
+### Direction exploration (FULL mode)
 
-The fallback for vague briefs: pick 3 differentiated directions from 5 schools × 20 philosophies, generate all 3 demos in parallel, let the user choose.
+The full process for high-value or high-uncertainty work (FULL mode): **three complementary logics in parallel** — second-hand roulette (1 of 20, breaking the model's minimalist reflex), reality reference (world-class award-winning sites), and best designer (top-studio philosophy) — each producing one **real visual**, all 3 shown at once so you choose by looking, never blind from text. Underneath sits the **60-style HTML-native library** (20 web + 20 deck + 20 infographic, pure CSS, no image generation).
 
 <p align="center"><img src="https://github.com/alchaincyf/huashu-design/releases/download/v2.0/w3-fallback-advisor-en.gif" width="100%"></p>
 
@@ -188,15 +212,17 @@ The hardest rule in the skill. When the task touches a specific brand (Stripe, L
 
 A/B-tested (v1 vs v2, 6 agents each): **v2 reduced stability variance by 5×**. Stability of stability — that's the real moat.
 
-### Design Direction Advisor (Fallback)
+### Design Direction Advisor (mode-triggered)
 
-Triggered when the brief is too vague to execute:
+Not a mandatory step for every visual task — it exists to settle genuine uncertainty about the design direction:
 
-- Don't run on generic intuition — enter Fallback mode
-- Recommend 3 differentiated directions from 5 schools × 20 philosophies, each **from a different school**
-- Each comes with flagship works, gestalt keywords, representative designer
-- Generate 3 visual demos in parallel, let the user choose
-- Once chosen, continue into the Junior Designer main flow
+- **FAST**: skip this section entirely; edit along the existing design context and create no meaningless visual variants
+- **STANDARD**: triggered only when the visual direction is still open — 2 clearly different real directions by default; with an explicit reference / brand system / existing design language / approved direction, skip exploration and implement directly; never manufacture fake variants that differ only in colour
+- **FULL**: run the complete process — clarify in conversation first and ask for references (name / logo / brand colours / sites you like) → gather the real images the content requires (public domain / royalty-free, one script) → **multiple complementary logics in parallel subagents**, each producing a **real visual**: ① second-hand roulette (`date +%S`, 1 of 20, breaking the model's minimalist reflex) ② reality reference (world-class award-winning sites / decks / iOS prototypes) ③ best designer (the studio philosophy best suited when budget is unlimited)
+- **Never let you pick a style blind** — put the directions in front of you and choose by looking
+- Skip direction exploration entirely when: the user says "just build it" / "no options" · iteration after a direction is chosen · local visual edits · bug / responsive / overflow fixes · purely mechanical work such as text, export or screenshots · the user supplies a precise target to reproduce faithfully
+
+The ammunition underneath is the **5 schools × 20 philosophies** library (graded bold / neutral / quiet, pure CSS with no image generation) — not dogma. references load on demand: read only what the current step actually needs, never everything at once "to understand the skill fully".
 
 ### Junior Designer Workflow
 
@@ -224,7 +250,7 @@ I'll be upfront: the Core Asset Protocol's philosophy was lifted from system pro
 
 Positioning differences:
 
-| | Claude Design | huashu-design |
+| | Claude Design | huashu-design-lite |
 |---|---|---|
 | Form | Web product (used in browser) | Skill (used in Claude Code) |
 | Quota | Subscription quota | API usage · parallel agents unblocked |
@@ -233,7 +259,7 @@ Positioning differences:
 | Complex animation | Limited | Stage + Sprite timeline · 60fps export |
 | Agent compatibility | Claude.ai only | Claude Code / Cursor / Trae / Hermes / OpenClaw |
 
-Claude Design is a **better graphics tool**. Huashu-design makes **the graphics-tool layer disappear**. Two paths, different audiences.
+Claude Design is a **better graphics tool**. Huashu-design-lite makes **the graphics-tool layer disappear**. Two paths, different audiences.
 
 ---
 
@@ -256,7 +282,7 @@ This is an 80-point skill, not a 100-point product. For people unwilling to open
 ## Repository Structure
 
 ```
-huashu-design/
+huashu-design-lite/
 ├── SKILL.md                 # Main doc (read by agent, Chinese)
 ├── README.md                # Chinese README (default)
 ├── README.en.md             # English README (this file)
@@ -292,7 +318,9 @@ huashu-design/
 
 ---
 
-## Origin Story
+## Upstream and origin
+
+This repository is forked from [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design) by 花叔 (Huasheng / Huashu). The upstream HTML-native design engine, brand asset protocol, toolchain and all visual assets belong to the upstream project; this fork only changes the workflow's complexity routing (see [Design complexity routing](#design-complexity-routing)). The origin story below belongs to the upstream.
 
 The day Anthropic launched Claude Design I played with it until 4 a.m. A few days later I realized I hadn't opened it once since — not because it's bad (it's the most polished product in the category) but because I'd rather have an agent work in my terminal than open any graphical UI.
 
@@ -302,7 +330,7 @@ Thanks to Anthropic for writing the Claude Design prompts so clearly. This kind 
 
 ---
 
-## Available Languages
+## Upstream · Available Languages
 
 Community-maintained translations of this skill. Translation quality and license terms are the responsibility of each maintainer — please check the linked repo before relying on it.
 
@@ -320,11 +348,11 @@ Want to add your language? Fork the repo, translate `SKILL.md` + `README.md`, an
 
 **Relicensed to MIT on 2026-05-14.** This skill was previously released under a Personal Use License that restricted commercial use. That restriction is now removed.
 
-Under the [MIT License](LICENSE) you are free to **use, modify, and distribute** this skill for any purpose, **including commercial use** — inside companies, in client deliverables, as part of a paid product, anywhere. No prior authorization, no licensing fee, no notification required. Attribution is appreciated but not required.
+Under the [MIT License](LICENSE) you are free to **use, modify, and distribute** this skill for any purpose, **including commercial use** — inside companies, in client deliverables, as part of a paid product, anywhere. No prior authorization, no licensing fee, no notification required. Attribution is appreciated but not required. This fork (huashu-design-lite) is released under the same MIT license.
 
 ---
 
-## Connect · Huasheng (Huashu)
+## Upstream · Connect Huasheng (Huashu)
 
 Huasheng is an AI-native coder, independent developer, and AI content creator. Notable work: Cat Fill Light (App Store Top 1 in Paid category), *A Book on DeepSeek*, Nüwa.skill (GitHub 21k+ stars). Combined 300k+ followers across platforms.
 
